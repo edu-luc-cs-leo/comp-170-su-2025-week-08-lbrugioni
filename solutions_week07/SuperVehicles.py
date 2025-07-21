@@ -12,7 +12,7 @@ class SuperVehicles:
     def description(self):
         """The Vehicle object can describe itself using the following string. 
         This can also be used as the basis for the __str__ method of the 
-        class if we need one so that we can print its objets."""
+        class if we need one so that we can print its objects"""
         return f"{self.name} gets {self.mpg} miles per gallon."
 
 

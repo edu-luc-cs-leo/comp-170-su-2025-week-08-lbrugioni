@@ -39,3 +39,31 @@ class Person:
     def __str__(self):
         """String representation for the object"""
         return f"[ {self.first_name} {self.last_name}]"
+
+    def say_birthday(self):
+        #Check if birthday was given 
+        if self.birthday is not None:
+            day=self.birthday.get_day()
+            month_number=self.birthday.get_month()
+        #Choose the right ending letters for the specfic number date 
+            if day in [1,21,31]:
+                ending='st'
+            elif day in [2,22]: #Use elif statments to avoid using mutiple if statments 
+                ending='nd'
+            elif day in [3,23]:
+                ending="rd"
+            else:
+                ending="th"
+
+            month= ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+            result=f"{day}{ending} of {month[month_number-1]}"
+        #If data is not given, avoid error by printing "Birthday is not given'"
+        else:
+            result="Birthday is not given"
+
+        return result
+    
+#__It__ stands for less than ans is called when you use < inbetween two objects
+def __It__(self,other): # Create a special method and call < between two objects
+    return self.first_name < other.first_name 
