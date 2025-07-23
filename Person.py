@@ -95,10 +95,7 @@ print(p5.say_birthday())
 
 print()
 
-#Test self name
-p1=Person("Sara","Bob")
-p2=Person("Lillie","Brugioni")
-
+#Test __lt__
 print(p1 < p2)
 print(p1 > p2)
 
