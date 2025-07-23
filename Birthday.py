@@ -39,15 +39,20 @@ class Birthday:
     # Accessor for __day
     def get_day(self):
         return self.__day
-
-    # Compute days to birthday
+    
+    
     def days_until(self):
-        # obtain today's date
-        # extract month and day
-        # subtract from birthday
-        # return # of days
-        today = datetime.today()
-        # COMPLETE THIS FOR YOUR ASSIGNMENT
+       """Calculate the number of days from today until the next birthday. Assumes all years are 365 days. """
+       today=datetime.today() #obtain today's date 
+       today_day=self.day_in_year(today.month,today.day) # extract month and day
+       bday_day=self.day_in_year(self.__month,self.__day) #subtract from birthday
+
+       if bday_day>today_day: #Birthday is coming up later in the year 
+           result= bday_day-today_day 
+       else: 
+        result=365+(bday_day-today_day) #Birthday has already passed 
+        return result 
+       
         
     def day_in_year(self, month, day):
         """calculates the day number within the year corresponding to a given 
@@ -60,20 +65,34 @@ class Birthday:
     def __str__(self):
         """String representation for the object"""
         return f"[ {self.get_month()}/{self.get_day()} ]"
-    
-    def self_month(self,month):
+
+    def set_month(self,month):
+        """Set the month if valid (1-12). Reset day to 1 if inputed 
+         day is invalid for the specified month."""
         #Check if the month number is valid
         if 1<=month <=12:
             #Check if the current day is incorrect for the given month
-            if self.__day> Birthday.days_in_month:
+            if self.__day> Birthday.days_in_month[month-1]:
                 self.__day=1
             self.__month=month
-
-
-
-    
+        
+#Test Code
 
 demo = Birthday(6,29)
 
 print(demo.day_in_year(6,29)) # d_b
 print(demo.day_in_year(4,29)) # d_t
+
+print()
+
+#Test for set_month ()
+bday=Birthday(4,30)
+print(bday)
+bday.set_month(2) #sets day back to 1 for invalid dyas in month 
+print(bday)
+
+print()
+
+#Test days_until()
+bday=Birthday(4,23)
+print(bday.days_until())
